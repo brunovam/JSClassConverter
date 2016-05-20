@@ -276,6 +276,8 @@ class JSClass:
         all_code += self.code
         for attr_id in self.attributes:
             all_code += bank.js_attributes[attr_id].print_js6_code()
+        for m_id in self.methods:
+            all_code += bank.js_methods[m_id].print_signature()
         all_code += "}\n"
 
         for meth_id in self.methods:
@@ -328,6 +330,11 @@ class JSMethod:
 
     def get_type(self):
         return JS_TYPE().METHOD
+
+    def print_signature(self):
+        all_code = ""
+        all_code += "%s(%s);\n" % (self.name, ",".join(self.attributes_of_structure))
+        return all_code
 
     def print_js6_code(self, bank):
         all_code = ""
