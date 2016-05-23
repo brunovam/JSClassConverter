@@ -28,7 +28,6 @@ class Bank:
     js_classes = None
     js_methods = None
     js_attributes = None
-
     js_external_code = None
 
     def __init__(self):
@@ -138,6 +137,7 @@ class Bank:
         else:
             print("You have to pass an id or a name to get a bank id class")
             return None
+
 
     def register_kinships(self, kinships):
         for k in kinships.get_itens():

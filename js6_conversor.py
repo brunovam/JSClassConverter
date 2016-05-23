@@ -88,7 +88,23 @@ def read_js_file(filename, bank):
         next_word_is_method = False
         next_word_is_attribute = False
         structures = []
+        comment_chars = "//"
+        is_comment = False
         for line_of_file in all_mse_file_content:
+            if "/*" in line_of_file:
+                is_comment = True
+            if "*/" in line_of_file:
+                is_comment = False
+                bank.insert_external_code(line_of_file)
+                continue
+            if is_comment:
+                bank.insert_external_code(line_of_file)
+                continue;
+
+            line_with_comments = ""+line_of_file
+            if comment_chars in line_of_file:
+                line_of_file = line_of_file.split(comment_chars, 1)[0]
+
             if "function" in line_of_file:
                 if not "prototype" in line_of_file:
                     if "this" in line_of_file:
@@ -120,14 +136,16 @@ def read_js_file(filename, bank):
                 else:
                     line = line_of_file.split(".")
                     class_name = line[0]
-                    method_name, attributes = line[2].replace(" ","").replace("{","").split("=function")
+                    method_name, attributes = line[2].replace(" ","").replace("{","").replace("\n","").split("=function")
                     attributes = attributes.replace("(","").replace(")","").split(",")#TODO Treat the methods attributes
+                    bank.get_object_by_name(method_name).insert_attributes_of_structure(attributes)
                     structures.append(method_name)
                     continue
+
             if not len(structures):
-                bank.insert_external_code(line_of_file)
+                bank.insert_external_code(line_with_comments)
             else:
-                bank.get_object_by_name(structures[len(structures)-1]).insert_code(line_of_file)#create a stack to store the different levels of the structures tree
+                bank.get_object_by_name(structures[len(structures)-1]).insert_code(line_with_comments)#create a stack to store the different levels of the structures tree
 
 
 def write_js6_code(bank):
