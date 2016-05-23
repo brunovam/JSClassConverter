@@ -87,7 +87,7 @@ def read_js_file(filename, bank):
         next_word_is_name = False
         next_word_is_method = False
         next_word_is_attribute = False
-        structures = []
+        structures = [] #Stack to store the different levels of the structures tree
         comment_chars = "//"
         is_comment = False
         for line_of_file in all_mse_file_content:
@@ -137,7 +137,7 @@ def read_js_file(filename, bank):
                     line = line_of_file.split(".")
                     class_name = line[0]
                     method_name, attributes = line[2].replace(" ","").replace("{","").replace("\n","").split("=function")
-                    attributes = attributes.replace("(","").replace(")","").split(",")#TODO Treat the methods attributes
+                    attributes = attributes.replace("(","").replace(")","").split(",")
                     bank.get_object_by_name(method_name).insert_attributes_of_structure(attributes)
                     structures.append(method_name)
                     continue
@@ -145,7 +145,7 @@ def read_js_file(filename, bank):
             if not len(structures):
                 bank.insert_external_code(line_with_comments)
             else:
-                bank.get_object_by_name(structures[len(structures)-1]).insert_code(line_with_comments)#create a stack to store the different levels of the structures tree
+                bank.get_object_by_name(structures[len(structures)-1]).insert_code(line_with_comments)
 
 
 def write_js6_code(bank):
