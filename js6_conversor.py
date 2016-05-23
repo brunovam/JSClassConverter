@@ -150,7 +150,7 @@ def read_js_file(filename, bank):
 
 def write_js6_code(bank):
     all_code = ""
-    for c in bank.get_all_classes():
+    for c in bank.get_all_classes_ordered_by_kinship():
         all_code += c.print_js6_code(bank)
 
     all_code += bank.print_external_code()

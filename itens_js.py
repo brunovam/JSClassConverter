@@ -101,6 +101,29 @@ class Bank:
     def get_all_attributes(self):
         return self.js_attributes
 
+    def get_all_classes_ordered_by_kinship(self):
+        ordered_classes = []
+        aux = list(self.js_classes)
+
+        count = 0
+        for c in aux:
+            if c.superclass_of and not c.subclass_of:
+                ordered_classes.append(c)
+                aux.pop(count)
+            count += 1
+
+        count = 0
+        for c in aux:
+            if c.superclass_of:
+                ordered_classes.append(c)
+                aux.pop(count)
+            count += 1
+
+        for item in aux:
+            ordered_classes.append(item)
+
+        return ordered_classes
+
     def get_class(self, id=None,name=None,bank_id=None):
         if not bank_id:
             return self.get_bank_id(id,name, JS_TYPE().CLASS)
@@ -277,7 +300,7 @@ class JSClass:
         for attr_id in self.attributes:
             all_code += bank.js_attributes[attr_id].print_js6_code()
         for m_id in self.methods:
-            all_code += bank.js_methods[m_id].print_signature()
+            all_code += "this.%s" % bank.js_methods[m_id].print_signature()
         all_code += "}\n"
 
         for meth_id in self.methods:
