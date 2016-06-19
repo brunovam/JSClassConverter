@@ -1,0 +1,626 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "EmptyStatement"
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "FunctionExpression",
+                    "id": null,
+                    "params": [],
+                    "defaults": [],
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "VariableDeclaration",
+                                "declarations": [
+                                    {
+                                        "type": "VariableDeclarator",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "lastTime"
+                                        },
+                                        "init": {
+                                            "type": "Literal",
+                                            "value": 0,
+                                            "raw": "0"
+                                        }
+                                    }
+                                ],
+                                "kind": "var"
+                            },
+                            {
+                                "type": "VariableDeclaration",
+                                "declarations": [
+                                    {
+                                        "type": "VariableDeclarator",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "vendors"
+                                        },
+                                        "init": {
+                                            "type": "ArrayExpression",
+                                            "elements": [
+                                                {
+                                                    "type": "Literal",
+                                                    "value": "ms",
+                                                    "raw": "'ms'"
+                                                },
+                                                {
+                                                    "type": "Literal",
+                                                    "value": "moz",
+                                                    "raw": "'moz'"
+                                                },
+                                                {
+                                                    "type": "Literal",
+                                                    "value": "webkit",
+                                                    "raw": "'webkit'"
+                                                },
+                                                {
+                                                    "type": "Literal",
+                                                    "value": "o",
+                                                    "raw": "'o'"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ],
+                                "kind": "var"
+                            },
+                            {
+                                "type": "ForStatement",
+                                "init": {
+                                    "type": "VariableDeclaration",
+                                    "declarations": [
+                                        {
+                                            "type": "VariableDeclarator",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "x"
+                                            },
+                                            "init": {
+                                                "type": "Literal",
+                                                "value": 0,
+                                                "raw": "0"
+                                            }
+                                        }
+                                    ],
+                                    "kind": "var"
+                                },
+                                "test": {
+                                    "type": "LogicalExpression",
+                                    "operator": "&&",
+                                    "left": {
+                                        "type": "BinaryExpression",
+                                        "operator": "<",
+                                        "left": {
+                                            "type": "Identifier",
+                                            "name": "x"
+                                        },
+                                        "right": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "vendors"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "length"
+                                            }
+                                        }
+                                    },
+                                    "right": {
+                                        "type": "UnaryExpression",
+                                        "operator": "!",
+                                        "argument": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "window"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "requestAnimationFrame"
+                                            }
+                                        },
+                                        "prefix": true
+                                    }
+                                },
+                                "update": {
+                                    "type": "UpdateExpression",
+                                    "operator": "++",
+                                    "argument": {
+                                        "type": "Identifier",
+                                        "name": "x"
+                                    },
+                                    "prefix": true
+                                },
+                                "body": {
+                                    "type": "BlockStatement",
+                                    "body": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "expression": {
+                                                "type": "AssignmentExpression",
+                                                "operator": "=",
+                                                "left": {
+                                                    "type": "MemberExpression",
+                                                    "computed": false,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "window"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "requestAnimationFrame"
+                                                    }
+                                                },
+                                                "right": {
+                                                    "type": "MemberExpression",
+                                                    "computed": true,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "window"
+                                                    },
+                                                    "property": {
+                                                        "type": "BinaryExpression",
+                                                        "operator": "+",
+                                                        "left": {
+                                                            "type": "MemberExpression",
+                                                            "computed": true,
+                                                            "object": {
+                                                                "type": "Identifier",
+                                                                "name": "vendors"
+                                                            },
+                                                            "property": {
+                                                                "type": "Identifier",
+                                                                "name": "x"
+                                                            }
+                                                        },
+                                                        "right": {
+                                                            "type": "Literal",
+                                                            "value": "RequestAnimationFrame",
+                                                            "raw": "'RequestAnimationFrame'"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "expression": {
+                                                "type": "AssignmentExpression",
+                                                "operator": "=",
+                                                "left": {
+                                                    "type": "MemberExpression",
+                                                    "computed": false,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "window"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "cancelAnimationFrame"
+                                                    }
+                                                },
+                                                "right": {
+                                                    "type": "LogicalExpression",
+                                                    "operator": "||",
+                                                    "left": {
+                                                        "type": "MemberExpression",
+                                                        "computed": true,
+                                                        "object": {
+                                                            "type": "Identifier",
+                                                            "name": "window"
+                                                        },
+                                                        "property": {
+                                                            "type": "BinaryExpression",
+                                                            "operator": "+",
+                                                            "left": {
+                                                                "type": "MemberExpression",
+                                                                "computed": true,
+                                                                "object": {
+                                                                    "type": "Identifier",
+                                                                    "name": "vendors"
+                                                                },
+                                                                "property": {
+                                                                    "type": "Identifier",
+                                                                    "name": "x"
+                                                                }
+                                                            },
+                                                            "right": {
+                                                                "type": "Literal",
+                                                                "value": "CancelAnimationFrame",
+                                                                "raw": "'CancelAnimationFrame'"
+                                                            }
+                                                        }
+                                                    },
+                                                    "right": {
+                                                        "type": "MemberExpression",
+                                                        "computed": true,
+                                                        "object": {
+                                                            "type": "Identifier",
+                                                            "name": "window"
+                                                        },
+                                                        "property": {
+                                                            "type": "BinaryExpression",
+                                                            "operator": "+",
+                                                            "left": {
+                                                                "type": "MemberExpression",
+                                                                "computed": true,
+                                                                "object": {
+                                                                    "type": "Identifier",
+                                                                    "name": "vendors"
+                                                                },
+                                                                "property": {
+                                                                    "type": "Identifier",
+                                                                    "name": "x"
+                                                                }
+                                                            },
+                                                            "right": {
+                                                                "type": "Literal",
+                                                                "value": "CancelRequestAnimationFrame",
+                                                                "raw": "'CancelRequestAnimationFrame'"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "IfStatement",
+                                "test": {
+                                    "type": "UnaryExpression",
+                                    "operator": "!",
+                                    "argument": {
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                            "type": "Identifier",
+                                            "name": "window"
+                                        },
+                                        "property": {
+                                            "type": "Identifier",
+                                            "name": "requestAnimationFrame"
+                                        }
+                                    },
+                                    "prefix": true
+                                },
+                                "consequent": {
+                                    "type": "BlockStatement",
+                                    "body": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "expression": {
+                                                "type": "AssignmentExpression",
+                                                "operator": "=",
+                                                "left": {
+                                                    "type": "MemberExpression",
+                                                    "computed": false,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "window"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "requestAnimationFrame"
+                                                    }
+                                                },
+                                                "right": {
+                                                    "type": "FunctionExpression",
+                                                    "id": null,
+                                                    "params": [
+                                                        {
+                                                            "type": "Identifier",
+                                                            "name": "callback"
+                                                        },
+                                                        {
+                                                            "type": "Identifier",
+                                                            "name": "element"
+                                                        }
+                                                    ],
+                                                    "defaults": [],
+                                                    "body": {
+                                                        "type": "BlockStatement",
+                                                        "body": [
+                                                            {
+                                                                "type": "VariableDeclaration",
+                                                                "declarations": [
+                                                                    {
+                                                                        "type": "VariableDeclarator",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "currTime"
+                                                                        },
+                                                                        "init": {
+                                                                            "type": "CallExpression",
+                                                                            "callee": {
+                                                                                "type": "MemberExpression",
+                                                                                "computed": false,
+                                                                                "object": {
+                                                                                    "type": "NewExpression",
+                                                                                    "callee": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "Date"
+                                                                                    },
+                                                                                    "arguments": []
+                                                                                },
+                                                                                "property": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "getTime"
+                                                                                }
+                                                                            },
+                                                                            "arguments": []
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "kind": "var"
+                                                            },
+                                                            {
+                                                                "type": "VariableDeclaration",
+                                                                "declarations": [
+                                                                    {
+                                                                        "type": "VariableDeclarator",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "timeToCall"
+                                                                        },
+                                                                        "init": {
+                                                                            "type": "CallExpression",
+                                                                            "callee": {
+                                                                                "type": "MemberExpression",
+                                                                                "computed": false,
+                                                                                "object": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "Math"
+                                                                                },
+                                                                                "property": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "max"
+                                                                                }
+                                                                            },
+                                                                            "arguments": [
+                                                                                {
+                                                                                    "type": "Literal",
+                                                                                    "value": 0,
+                                                                                    "raw": "0"
+                                                                                },
+                                                                                {
+                                                                                    "type": "BinaryExpression",
+                                                                                    "operator": "-",
+                                                                                    "left": {
+                                                                                        "type": "Literal",
+                                                                                        "value": 16,
+                                                                                        "raw": "16"
+                                                                                    },
+                                                                                    "right": {
+                                                                                        "type": "BinaryExpression",
+                                                                                        "operator": "-",
+                                                                                        "left": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "currTime"
+                                                                                        },
+                                                                                        "right": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "lastTime"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "kind": "var"
+                                                            },
+                                                            {
+                                                                "type": "VariableDeclaration",
+                                                                "declarations": [
+                                                                    {
+                                                                        "type": "VariableDeclarator",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "id"
+                                                                        },
+                                                                        "init": {
+                                                                            "type": "CallExpression",
+                                                                            "callee": {
+                                                                                "type": "MemberExpression",
+                                                                                "computed": false,
+                                                                                "object": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "window"
+                                                                                },
+                                                                                "property": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "setTimeout"
+                                                                                }
+                                                                            },
+                                                                            "arguments": [
+                                                                                {
+                                                                                    "type": "FunctionExpression",
+                                                                                    "id": null,
+                                                                                    "params": [],
+                                                                                    "defaults": [],
+                                                                                    "body": {
+                                                                                        "type": "BlockStatement",
+                                                                                        "body": [
+                                                                                            {
+                                                                                                "type": "ExpressionStatement",
+                                                                                                "expression": {
+                                                                                                    "type": "CallExpression",
+                                                                                                    "callee": {
+                                                                                                        "type": "Identifier",
+                                                                                                        "name": "callback"
+                                                                                                    },
+                                                                                                    "arguments": [
+                                                                                                        {
+                                                                                                            "type": "BinaryExpression",
+                                                                                                            "operator": "+",
+                                                                                                            "left": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "currTime"
+                                                                                                            },
+                                                                                                            "right": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "timeToCall"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "generator": false,
+                                                                                    "expression": false
+                                                                                },
+                                                                                {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "timeToCall"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "kind": "var"
+                                                            },
+                                                            {
+                                                                "type": "ExpressionStatement",
+                                                                "expression": {
+                                                                    "type": "AssignmentExpression",
+                                                                    "operator": "=",
+                                                                    "left": {
+                                                                        "type": "Identifier",
+                                                                        "name": "lastTime"
+                                                                    },
+                                                                    "right": {
+                                                                        "type": "BinaryExpression",
+                                                                        "operator": "+",
+                                                                        "left": {
+                                                                            "type": "Identifier",
+                                                                            "name": "currTime"
+                                                                        },
+                                                                        "right": {
+                                                                            "type": "Identifier",
+                                                                            "name": "timeToCall"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "ReturnStatement",
+                                                                "argument": {
+                                                                    "type": "Identifier",
+                                                                    "name": "id"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "generator": false,
+                                                    "expression": false
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "alternate": null
+                            },
+                            {
+                                "type": "IfStatement",
+                                "test": {
+                                    "type": "UnaryExpression",
+                                    "operator": "!",
+                                    "argument": {
+                                        "type": "MemberExpression",
+                                        "computed": false,
+                                        "object": {
+                                            "type": "Identifier",
+                                            "name": "window"
+                                        },
+                                        "property": {
+                                            "type": "Identifier",
+                                            "name": "cancelAnimationFrame"
+                                        }
+                                    },
+                                    "prefix": true
+                                },
+                                "consequent": {
+                                    "type": "BlockStatement",
+                                    "body": [
+                                        {
+                                            "type": "ExpressionStatement",
+                                            "expression": {
+                                                "type": "AssignmentExpression",
+                                                "operator": "=",
+                                                "left": {
+                                                    "type": "MemberExpression",
+                                                    "computed": false,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "window"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "cancelAnimationFrame"
+                                                    }
+                                                },
+                                                "right": {
+                                                    "type": "FunctionExpression",
+                                                    "id": null,
+                                                    "params": [
+                                                        {
+                                                            "type": "Identifier",
+                                                            "name": "id"
+                                                        }
+                                                    ],
+                                                    "defaults": [],
+                                                    "body": {
+                                                        "type": "BlockStatement",
+                                                        "body": [
+                                                            {
+                                                                "type": "ExpressionStatement",
+                                                                "expression": {
+                                                                    "type": "CallExpression",
+                                                                    "callee": {
+                                                                        "type": "Identifier",
+                                                                        "name": "clearTimeout"
+                                                                    },
+                                                                    "arguments": [
+                                                                        {
+                                                                            "type": "Identifier",
+                                                                            "name": "id"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "generator": false,
+                                                    "expression": false
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "alternate": null
+                            }
+                        ]
+                    },
+                    "generator": false,
+                    "expression": false
+                },
+                "arguments": []
+            }
+        }
+    ],
+    "sourceType": "script"
+}
