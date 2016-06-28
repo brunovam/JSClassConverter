@@ -1,2 +1,4 @@
-# ecma5Toecma6
-Convert ecma5 classes implementation to the brand new ecma6 classes structures
+# JSClassConverter
+Convert class like structures to the brand new ECMA6 classes.
+
+More information soon.
