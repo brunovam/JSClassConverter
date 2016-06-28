@@ -4,6 +4,7 @@ class JS_TYPE:
     ATTRIBUTE = 3
     INHERITANCE = 4
     METHOD_OR_CLASS = 5
+    PACKAGE = 6
 
 
 class Kinship:
@@ -30,11 +31,14 @@ class Bank:
     js_attributes = None
     js_external_code = None
 
+    js_initial_code = None
+
     def __init__(self):
         self.js_classes = []
         self.js_methods = []
         self.js_attributes = []
         self.js_external_code = ""
+        self.js_initial_code = ""
 
     def insert_class(self, js_class):
         js_class.insert_bank_id(len(self.js_classes))
@@ -72,24 +76,32 @@ class Bank:
     def get_object_by_name(self, object_name):
         for c in self.js_classes:
             if c.name == object_name:
-                return c #see if this is returning the object by reference
+                return c
 
         for m in self.js_methods:
             if m.name == object_name:
-                return m #see if this is returning the object by reference
+                return m
 
         for a in self.js_attributes:
             if a.name == object_name:
-                return a #see if this is returning the object by reference
+                return a
 
         return None
 
     def insert_external_code(self, code):
         self.js_external_code += code
 
+    def insert_initial_code(self, code):
+        self.js_initial_code += code
+
     def print_external_code(self):
         all_code = ""
         all_code += self.js_external_code
+        return all_code
+
+    def print_initial_code(self):
+        all_code = ""
+        all_code += self.js_initial_code
         return all_code
 
     def get_all_classes(self):
@@ -161,6 +173,12 @@ class Bank:
             print("You have to pass an id or a name to get a bank id class")
             return None
 
+    def get_higher_id(self):
+        higher_id = None
+        for obj in self.js_classes + self.js_methods + self.js_attributes:
+            if obj.id > higher_id:
+                higher_id = obj.id
+        return higher_id
 
     def register_kinships(self, kinships):
         for k in kinships.get_itens():
@@ -168,8 +186,6 @@ class Bank:
                 self.register_subclass_into_class(k["PARENT"], k["SON"])
             elif k["PARENT_TYPE"] == JS_TYPE().CLASS and k["SON_TYPE"] == JS_TYPE().METHOD:
                 self.register_method_into_class(k["PARENT"], k["SON"])
-            # elif k["PARENT_TYPE"] == JS_TYPE().CLASS and k["SON_TYPE"] == JS_TYPE().ATTRIBUTE:
-            #     self.register_attribute_into_class(k["PARENT"], k["SON"])
             elif k["PARENT_TYPE"] == JS_TYPE().METHOD_OR_CLASS and k["SON_TYPE"] == JS_TYPE().ATTRIBUTE:
                 found = 0
                 for c in self.js_classes:
@@ -181,11 +197,12 @@ class Bank:
                     k["PARENT_TYPE"] = JS_TYPE().METHOD
                     self.register_attribute_into_method(k["PARENT"], k["SON"])
             else:
-                print("Algo deu muito errado!")
+                print("Something very wrong happened!")
                 exit(1)
 
     def print_bank(self):
         print("The bank has %d classes, %d methods and %d attributes" % (len(self.js_classes), len(self.js_methods), len(self.js_attributes)))
+
         for c in self.js_classes:
             print("Class")
             c.print_obj()
@@ -208,7 +225,7 @@ class Bank:
 
 class JSClass:
     name = None
-    id = None # que aparece no arquivo
+    id = None # showed in the mse file
     type_ = None
     superclass_of = None
     subclass_of = None
@@ -361,7 +378,10 @@ class JSMethod:
 
     def print_js6_code(self, bank):
         all_code = ""
-        all_code += "%s (%s){\n" % (self.name, ",".join(self.attributes_of_structure))
+        if self.modifier == "static":
+            all_code += "static %s (%s){\n" % (self.name, ",".join(self.attributes_of_structure))
+        else:
+            all_code += "%s (%s){\n" % (self.name, ",".join(self.attributes_of_structure))
         all_code += self.code
         for attr_id in self.attributes:
             all_code += bank.js_attributes[attr_id].print_js6_code()
